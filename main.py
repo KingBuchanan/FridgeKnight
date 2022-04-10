@@ -1,4 +1,4 @@
-from FridgeKnight import FridgeKnight
+from src.FridgeKnight import FridgeKnight
 
 
 if __name__ == "__main__":

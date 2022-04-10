@@ -1,4 +1,4 @@
-import barcodescanner
+import src.barcodescanner as barcodescanner
 
 
 

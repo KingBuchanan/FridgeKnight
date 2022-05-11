@@ -10,6 +10,8 @@ class FridgeKnight():
     def __init__(self):
         print("Starting listener")
         self.UPC_Read()
+        self.data=db.Database()
+        self.dbVersion()
         
         
     def scan(self):
@@ -20,10 +22,4 @@ class FridgeKnight():
         return upc
 
     def dbVersion(self):
-        
-
-    
-        
-        
-    
-
+        return self.data.dbVersion()

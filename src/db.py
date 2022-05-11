@@ -1,4 +1,4 @@
-import MySQLdb
+import mysql.connector
 
 
 
@@ -6,12 +6,17 @@ import MySQLdb
 
 class Database():
   def __init__(self):  
-    self.db = MySQLdb.connect("localhost","testuser","test123","TESTDB" )
+    self.db = mysql.connector.connect(host="localhost",
+                                      database="FRIDGE",
+                                      user= "knight",
+                                      password="knight23",
+                                      )
     self.cursor = self.db.cursor()
 
   def dbVersion(self):
     data = self.cursor.fetchone()
-    print "Database version : %s " % data
+    return ("Database version : %s " % data)
+
 
   def cleanup(self):
     self.db.close()

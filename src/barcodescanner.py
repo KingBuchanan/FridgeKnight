@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from evdev import InputDevice, ecodes, list_devices, categorize
 import signal, sys
-barCodeDeviceString = "HID 0581:011c" # barcode device name
+barCodeDeviceString = "BarCode Scanner HID" # barcode device name
 scancodes = {
     # Scancode: ASCIICode
     0: None, 1: u'ESC', 2: u'1', 3: u'2', 4: u'3', 5: u'4', 6: u'5', 7: u'6', 8: u'7', 9: u'8',
@@ -21,7 +21,7 @@ def scan():
     devices = map(InputDevice, list_devices())
     try:
         for device in devices:
-            # print(device.name, device.fn)
+            print(device.name, device.fn)
             if barCodeDeviceString in device.name:
                 dev = InputDevice(device.path)
                 signal.signal(signal.SIGINT, signal_handler)
@@ -43,7 +43,7 @@ def scan():
                     dev.close()
             else:
                 continue
-    except Error as e:
+    except Error() as e:
         return e
         
     
